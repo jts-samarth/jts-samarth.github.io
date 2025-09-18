@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Samarth eGov Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        citblue: '#0c4da2',
+                        citizorange: '#e67e22',
+                        citgreen: '#2ecc71',
+                        citdark: '#2c3e50',
+                        citlight: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .doc-nav-item.active {
+            background-color: #f1f5f9;
+            border-left: 4px solid #0c4da2;
+            font-weight: 600;
+        }
+        
+        .doc-content-section {
+            display: none;
+        }
+        
+        .doc-content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .remark-card {
+            transition: all 0.3s ease;
+        }
+        
+        .remark-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .three-col-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-column, .remarks-column {
+                position: static !important;
+                height: auto !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-citlight text-gray-800">
+    <!-- Header -->
+    <header class="bg-citblue text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <span class="text-citblue font-bold text-lg">CIT</span>
+                        </div>
+                        <span class="text-xl font-bold">Samarth Documentation</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="hover:text-citzorange transition">
+                        <i class="fas fa-home mr-1"></i> Home
+                    </a>
+                    <a href="#" class="hover:text-citzorange transition">
+                        <i class="fas fa-user mr-1"></i> Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="three-col-layout grid grid-cols-1 lg:grid-cols-[300px,1fr,300px] min-h-screen">
+        <!-- Left Navigation Column -->
+        <div class="nav-column bg-white shadow-md p-4 lg:p-6 overflow-y-auto sticky top-[68px] h-[calc(100vh-68px)]">
+            <h2 class="text-xl font-bold mb-6 text-citblue">Modules</h2>
+            
+            <div class="space-y-1">
+                <a href="#student-management" class="doc-nav-item block p-3 rounded-lg hover:bg-gray-100 transition active" data-target="student-management">
+                    <div class="flex items-center">
+                        <i class="fas fa-user-graduate text-citblue mr-3"></i>
+                        <span>Student Management</span>
+                    </div>
+                </a>
+                
+                <a href="#hr-management" class="doc-nav-item block p-3 rounded-lg hover:bg-gray-100 transition" data-target="hr-management">
+                    <div class="flex items-center">
+                        <i class="fas fa-users text-citblue mr-3"></i>
+                        <span>HR Management</span>
+                    </div>
+                </a>
+                
+                <a href="#finance-accounts" class="doc-nav-item block p-3 rounded-lg hover:bg-gray-100 transition" data-target="finance-accounts">
+                    <div class="flex items-center">
+                        <i class="fas fa-chart-line text-citblue mr-3"></i>
+                        <span>Finance & Accounts</span>
+                    </div>
+                </a>
+                
+                <a href="#examination" class="doc-nav-item block p-3 rounded-lg hover:bg-gray-100 transition" data-target="examination">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-alt text-citblue mr-3"></i>
+                        <span>Examination</span>
+                    </div>
+                </a>
+                
+                <a href="#inventory" class="doc-nav-item block p-3 rounded-lg hover:bg-gray-100 transition" data-target="inventory">
+                    <div class="flex items-center">
+                        <i class="fas fa-boxes text-citblue mr-3"></i>
+                        <span>Inventory</span>
+                    </div>
+                </a>
+                
+                <a href="#research" class="doc-nav-item block p-3 rounded-lg hover:bg-gray-100 transition" data-target="research">
+                    <div class="flex items-center">
+                        <i class="fas fa-flask text-citblue mr-3"></i>
+                        <span>Research Management</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <h3 class="font-semibold mb-3">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-sm text-citblue hover:underline">User Manuals</a></li>
+                    <li><a href="#" class="text-sm text-citblue hover:underline">Video Tutorials</a></li>
+                    <li><a href="#" class="text-sm text-citblue hover:underline">FAQ</a></li>
+                    <li><a href="#" class="text-sm text-citblue hover:underline">Submit a Ticket</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Middle Content Column -->
+        <div class="content-column p-4 md:p-6 lg:p-8 bg-white">
+            <!-- Student Management Section -->
+            <section id="student-management" class="doc-content-section active">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas fa-user-graduate text-citblue text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">Student Management</h1>
+                        <p class="text-gray-600">Complete lifecycle management from admission to alumni</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                    <p class="text-sm"><span class="font-semibold">Status:</span> <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Implemented</span></p>
+                </div>
+                
+                <h2 class="text-xl font-semibold mb-4 text-citblue">Key Features</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-user-plus text-citgreen mr-2"></i>
+                            Admission Process
+                        </h3>
+                        <p class="text-sm text-gray-600">Online application form, document upload, application tracking, and merit list publication.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-clipboard-list text-citblue mr-2"></i>
+                            Registration
+                        </h3>
+                        <p class="text-sm text-gray-600">Course registration, fee payment integration, and timetable generation.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-book text-citzorange mr-2"></i>
+                            Academic Records
+                        </h3>
+                        <p class="text-sm text-gray-600">Maintain student academic history, grades, credits, and transcripts.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-id-card text-citblue mr-2"></i>
+                            ID Card Management
+                        </h3>
+                        <p class="text-sm text-gray-600">Generate and manage student identity cards with QR codes for verification.</p>
+                    </div>
+                </div>
+                
+                <h2 class="text-xl font-semibold mb-4 text-citblue">User Guide</h2>
+                
+                <div class="prose max-w-none mb-8">
+                    <h3>For Students</h3>
+                    <p>To access the student portal:</p>
+                    <ol>
+                        <li>Visit <a href="#" class="text-citblue hover:underline">cit.samarth.ac.in</a></li>
+                        <li>Click on the "Student Login" button</li>
+                        <li>Enter your enrollment number and password</li>
+                        <li>After logging in, you can access your dashboard</li>
+                    </ol>
+                    
+                    <h3>Course Registration</h3>
+                    <p>During the registration period:</p>
+                    <ol>
+                        <li>Go to the "Academics" section</li>
+                        <li>Select "Course Registration"</li>
+                        <li>Choose your preferred courses from the available options</li>
+                        <li>Submit your selection and pay the required fees</li>
+                        <li>Download and print the registration confirmation</li>
+                    </ol>
+                    
+                    <h3>For Administrators</h3>
+                    <p>To manage student records:</p>
+                    <ol>
+                        <li>Login with your admin credentials</li>
+                        <li>Navigate to the "Student Management" section</li>
+                        <li>Use the search filters to find specific students</li>
+                        <li>Click on a student to view or edit their details</li>
+                        <li>Use the bulk operations for batch updates</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-circle text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Note:</strong> Student data modifications require approval from the department head. Always verify changes with the student's academic coordinator.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- HR Management Section -->
+            <section id="hr-management" class="doc-content-section">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas fa-users text-citblue text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">HR Management</h1>
+                        <p class="text-gray-600">Complete human resource management for staff and faculty</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                    <p class="text-sm"><span class="font-semibold">Status:</span> <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Implemented</span></p>
+                </div>
+                
+                <h2 class="text-xl font-semibold mb-4 text-citblue">Key Features</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-address-card text-citgreen mr-2"></i>
+                            Employee Records
+                        </h3>
+                        <p class="text-sm text-gray-600">Complete database of all employees with personal and professional details.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-money-bill-wave text-citblue mr-2"></i>
+                            Payroll Management
+                        </h3>
+                        <p class="text-sm text-gray-600">Salary processing, deductions, bonuses, and reimbursement management.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-calendar-alt text-citzorange mr-2"></i>
+                            Leave Management
+                        </h3>
+                        <p class="text-sm text-gray-600">Apply for leave, track balances, and approval workflows.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-chart-line text-citblue mr-2"></i>
+                            Performance Management
+                        </h3>
+                        <p class="text-sm text-gray-600">Appraisal system, goal setting, and performance reviews.</p>
+                    </div>
+                </div>
+                
+                <h2 class="text-xl font-semibold mb-4 text-citblue">User Guide</h2>
+                
+                <div class="prose max-w-none mb-8">
+                    <h3>For Employees</h3>
+                    <p>To access your HR profile:</p>
+                    <ol>
+                        <li>Visit <a href="#" class="text-citblue hover:underline">cit.samarth.ac.in</a></li>
+                        <li>Click on the "Employee Login" button</li>
+                        <li>Enter your employee ID and password</li>
+                        <li>Access your dashboard with personal and professional information</li>
+                    </ol>
+                    
+                    <h3>Applying for Leave</h3>
+                    <p>To submit a leave request:</p>
+                    <ol>
+                        <li>Go to the "Leave Management" section</li>
+                        <li>Click on "Apply for Leave"</li>
+                        <li>Select leave type, dates, and provide a reason</li>
+                        <li>Submit the application for approval</li>
+                        <li>Track the status in your leave dashboard</li>
+                    </ol>
+                    
+                    <h3>For HR Administrators</h3>
+                    <p>To manage employee records:</p>
+                    <ol>
+                        <li>Login with HR admin credentials</li>
+                        <li>Navigate to the "Employee Management" section</li>
+                        <li>Use filters to find specific employees</li>
+                        <li>Manage employee details, roles, and permissions</li>
+                        <li>Generate reports for management review</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-circle text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Note:</strong> HR data is sensitive and confidential. Ensure proper authorization before accessing or modifying employee records. Always follow institutional data privacy policies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Additional module sections would follow the same pattern -->
+            <section id="finance-accounts" class="doc-content-section">
+                <!-- Finance & Accounts content would go here -->
+            </section>
+            
+            <section id="examination" class="doc-content-section">
+                <!-- Examination content would go here -->
+            </section>
+            
+            <section id="inventory" class="doc-content-section">
+                <!-- Inventory content would go here -->
+            </section>
+            
+            <section id="research" class="doc-content-section">
+                <!-- Research Management content would go here -->
+            </section>
+        </div>
+        
+        <!-- Right Remarks Column -->
+        <div class="remarks-column bg-gray-50 p-4 lg:p-6 overflow-y-auto sticky top-[68px] h-[calc(100vh-68px)]">
+            <h2 class="text-xl font-bold mb-6 text-citblue">Remarks & Roles</h2>
+            
+            <div class="remarks-content">
+                <!-- Student Management Remarks -->
+                <div class="remarks-section active" data-target="student-management">
+                    <h3 class="font-semibold mb-4 text-citblue">User Roles</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-user-graduate text-citblue mr-2"></i>
+                                Students
+                            </h4>
+                            <p class="text-sm text-gray-600">All enrolled students can access their profiles, register for courses, view grades, and update personal information.</p>
+                        </div>
+                        
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-chalkboard-teacher text-citzorange mr-2"></i>
+                                Faculty Advisors
+                            </h4>
+                            <p class="text-sm text-gray-600">Can view advisee records, approve course registrations, and monitor academic progress.</p>
+                        </div>
+                        
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-user-tie text-citgreen mr-2"></i>
+                                Department Administrators
+                            </h4>
+                            <p class="text-sm text-gray-600">Manage student records, process applications, generate reports, and oversee department-level academic operations.</p>
+                        </div>
+                        
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-cogs text-citblue mr-2"></i>
+                                System Administrators
+                            </h4>
+                            <p class="text-sm text-gray-600">Full access to configure system settings, manage user permissions, and troubleshoot issues.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-semibold mt-6 mb-4 text-citblue">Implementation Notes</h3>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-sm">This module was implemented in January 2023. Integration with the examination module is scheduled for Q4 2023.</p>
+                    </div>
+                </div>
+                
+                <!-- HR Management Remarks -->
+                <div class="remarks-section" data-target="hr-management">
+                    <h3 class="font-semibold mb-4 text-citblue">User Roles</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-user-tie text-citblue mr-2"></i>
+                                All Employees
+                            </h4>
+                            <p class="text-sm text-gray-600">Can view their personal information, apply for leave, access payslips, and update contact details.</p>
+                        </div>
+                        
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-user-shield text-citzorange mr-2"></i>
+                                Department Heads
+                            </h4>
+                            <p class="text-sm text-gray-600">Can approve leave applications, view team reports, and initiate performance reviews for their department.</p>
+                        </div>
+                        
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-money-check-alt text-citgreen mr-2"></i>
+                                HR Personnel
+                            </h4>
+                            <p class="text-sm text-gray-600">Manage employee records, process payroll, oversee recruitment, and generate HR reports.</p>
+                        </div>
+                        
+                        <div class="remark-card bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium mb-2 flex items-center">
+                                <i class="fas fa-cogs text-citblue mr-2"></i>
+                                System Administrators
+                            </h4>
+                            <p class="text-sm text-gray-600">Full access to configure HR policies, manage roles, and maintain system integrity.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-semibold mt-6 mb-4 text-citblue">Implementation Notes</h3>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-sm">This module was implemented in March 2023. Integration with the finance module is currently in progress.</p>
+                    </div>
+                </div>
+                
+                <!-- Additional remarks sections for other modules -->
+                <div class="remarks-section" data-target="finance-accounts">
+                    <!-- Finance & Accounts remarks -->
+                </div>
+                
+                <div class="remarks-section" data-target="examination">
+                    <!-- Examination remarks -->
+                </div>
+                
+                <div class="remarks-section" data-target="inventory">
+                    <!-- Inventory remarks -->
+                </div>
+                
+                <div class="remarks-section" data-target="research">
+                    <!-- Research Management remarks -->
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <h3 class="font-semibold mb-3">Support Information</h3>
+                <p class="text-sm text-gray-600 mb-2">For technical issues, contact:</p>
+                <p class="text-sm text-citblue">samarth-support@cit.ac.in</p>
+                <p class="text-sm text-gray-600 mt-3">Extension: 4357 (HELP)</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.doc-nav-item');
+            const contentSections = document.querySelectorAll('.doc-content-section');
+            const remarkSections = document.querySelectorAll('.remarks-section');
+            
+            // Function to activate a section
+            function activateSection(targetId) {
+                // Deactivate all sections
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                remarkSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Activate the target section
+                document.getElementById(targetId).classList.add('active');
+                
+                // Activate the corresponding remarks section
+                document.querySelector(`.remarks-section[data-target="${targetId}"]`).classList.add('active');
+                
+                // Activate the nav item
+                document.querySelector(`.doc-nav-item[data-target="${targetId}"]`).classList.add('active');
+            }
+            
+            // Add click event to nav items
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('data-target');
+                    activateSection(target);
+                    
+                    // Update URL hash
+                    window.location.hash = target;
+                });
+            });
+            
+            // Check URL hash on load
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                if (document.getElementById(targetId)) {
+                    activateSection(targetId);
+                }
+            }
+            
+            // Mobile menu toggle for smaller screens
+            const mobileMenuButton = document.createElement('button');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i> Modules';
+            mobileMenuButton.className = 'lg:hidden fixed bottom-4 right-4 bg-citblue text-white px-4 py-3 rounded-full shadow-lg z-40';
+            document.body.appendChild(mobileMenuButton);
+            
+            mobileMenuButton.addEventListener('click', function() {
+                document.querySelector('.nav-column').classList.toggle('hidden');
+            });
+            
+            // Close mobile nav when clicking outside
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth < 1024) {
+                    const navColumn = document.querySelector('.nav-column');
+                    if (!navColumn.contains(e.target) && e.target !== mobileMenuButton && !mobileMenuButton.contains(e.target)) {
+                        navColumn.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
